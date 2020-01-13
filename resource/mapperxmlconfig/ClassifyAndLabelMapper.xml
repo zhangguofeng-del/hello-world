@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.ClassifyAndLabelMapper">
+    <resultMap id="blogClassResult" type="com.colin.bean.BlogClass">
+        <id property="blogId" column="bc_id"/>
+        <result property="blogClass" column="bc_class"/>
+        <result property="userId" column="u_id"/>
+    </resultMap>
+    <insert id="insertClassify">
+        insert into blog_class value(null, #{param1}, #{param2})
+    </insert>
+    <delete id="deleteClassify">
+        delete from blog_class where bc_class = #{param1} and u_id = #{param2}
+    </delete>
+    <select id="selectClassifyName" resultMap="blogClassResult">
+        select bc_id, bc_class, u_id from blog_class where u_id = #{id}
+    </select>
+    <select id="selectLabelCount" resultType="java.lang.Integer">
+        select count(b_label) sum from book where u_id = #{id}
+    </select>
+    <select id="selectCountOfClass" resultType="java.lang.Integer">
+        select count(b_id) sum from book where b_classify = #{param1} and u_id = #{param2}
+    </select>
+    <select id="selectBlogName" resultType="java.lang.String">
+        select bc_class from blog_class where bc_id = #{blogId}
+    </select>
+    <select id="selectBolgId" resultType="java.lang.Integer">
+        select bc_id from blog_class where u_id = #{id}
+    </select>
+</mapper>

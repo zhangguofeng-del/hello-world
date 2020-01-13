@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.YiBiaoPanMapper">
+    <resultMap id="bookResult" type="com.colin.bean.Book">
+        <id property="id" column="b_id"/>
+        <result property="title" column="b_title"/>
+        <result property="createtime" column="b_reatetime"/>
+        <result property="label" column="b_label"/>
+        <result property="classify" column="b_classify"/>
+        <result property="pageview" column="b_pageview"/>
+        <result property="words" column="b_words"/>
+        <result property="userId" column="u_id"/>
+    </resultMap>
+    <resultMap id="guestResult" type="com.colin.bean.Guest">
+        <id property="guestId" column="g_id"/>
+        <result property="guestCreateTime" column="g_createtime"/>
+        <result property="words" column="g_words"/>
+        <result property="targetId" column="target_id"/>
+        <association property="user" column="u_id" javaType="com.colin.bean.User">
+            <id property="id" column="u_id"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>
+        </association>
+    </resultMap>
+    <insert id="insertGuest">
+        insert into guest values(null, #{param1}, #{param2}, #{param3}, #{param4})
+    </insert>
+    <select id="selectBookCount" resultType="java.lang.Integer">
+        select count(b_id) sum from book where u_id = #{id}
+    </select>
+    <select id="selectGuestCount" resultType="java.lang.Integer">
+        select count(g_id) sum from guest where target_id = #{id}
+    </select>
+    <select id="selectFileCount" resultType="java.lang.Integer">
+        select count(f_id) sum from blog_file where u_id = #{id}
+    </select>
+    <select id="selectFriendLinkCount" resultType="java.lang.Integer">
+        select count(fl_id) sum from friend_link where u_id = #{id}
+    </select>
+    <select id="selectBook" resultMap="bookResult">
+        select b_id, b_title, b_label, b_createtime, b_pageview, b_classify, b_words, u_id
+        from book
+        where u_id = #{id} order by b_createtime desc limit 5
+    </select>
+    <select id="selectGuest" resultMap="guestResult">
+        select g_id, g_createtime, g_words, u_id, id, name, password
+        from guest g,user u
+        where
+        target_id = #{id} and g.u_id = u.id
+        order by g_createtime desc limit 5
+    </select>
+    <select id="selectGuestUserName" resultType="com.colin.bean.User">
+        select id, name, mail, password from user where id = #{id}
+    </select>
+</mapper>

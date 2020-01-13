@@ -1,0 +1,62 @@
+ *{
+ 	margin: 0px;
+ 	padding: 0px;
+ }
+ #div1{
+    width: 590px;
+    height: 558px;
+	margin: 0px auto;
+	border: solid darkgray 2px;
+	border-radius: 5px;
+}
+#div1 > #div2{
+	height: 174px;
+	background-image: url("../jpg/a.gif");
+	text-align: center;
+	font-family: "微软雅黑";
+	color: white;
+	font-size: 50px;
+	padding-top: 10px;
+}
+#div1 > #div3{
+	height: 384px;
+}
+td{
+	font-family: "微软雅黑";
+	font-size: 20px;
+	padding-top: 10px;
+}
+#td1{
+	text-align: right;
+	padding-left: 50px;
+}
+#td2{
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 9px;
+}
+#td2 > input{
+	height: 30px;
+	size: 30;
+}
+#div4{
+	padding-left: 160px;
+}
+#div4 > input{
+	width: 70px;
+	height: 40px;
+	background-color: #7894da;
+	border-radius: 7px;
+	margin-top: 30px;
+	color: white;
+	font-size: 15px;
+}
+#div4 > a input{
+	width: 70px;
+	height: 40px;
+	background-color: #7894da;
+	border-radius: 7px;
+	margin-top: 30px;
+	color: white;
+	font-size: 15px;
+}

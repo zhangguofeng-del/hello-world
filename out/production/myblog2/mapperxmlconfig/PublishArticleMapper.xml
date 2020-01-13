@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.PublishArticleMapper">
+    <resultMap id="classResult" type="com.colin.bean.BlogClass">
+        <id property="blogId" column="bc_id"/>
+        <result property="blogClass" column="bc_class"/>
+    </resultMap>
+    <insert id="insertBook">
+        insert into book values(null, #{title}, #{label}, #{createtime}, #{pageview}, #{classify}, #{words}, #{userId})
+    </insert>
+    <insert id="insertYesOrNoClassify">
+
+    </insert>
+    <select id="selectClassify" resultMap="classResult">
+        select bc_id, bc_class from blog_class where u_id = #{id}
+    </select>
+</mapper>

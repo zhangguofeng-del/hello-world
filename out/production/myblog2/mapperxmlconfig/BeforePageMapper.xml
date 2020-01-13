@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.BeforePageMapper">
+    <resultMap id="bookResult" type="com.colin.bean.Book">
+        <id property="id" column="b_id"/>
+        <result property="title" column="b_title"/>
+        <result property="label" column="b_label"/>
+        <result property="createtime" column="b_createtime"/>
+        <result property="pageview" column="b_pageview"/>
+        <result property="classify" column="b_classify"/>
+        <result property="words" column="b_words"/>
+        <association property="user" column="u_id" javaType="com.colin.bean.User">
+            <id property="id" column="u_id"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>
+        </association>
+    </resultMap>
+    <insert id="insertGuest">
+        insert into guest values(null, #{param4}, #{param1}, #{param2}, #{param3})
+    </insert>
+    <select id="getBookTotalCount" resultType="java.lang.Integer">
+         select count(*) sum from book
+    </select>
+    <select id="selectAllBooks" resultMap="bookResult">
+        select u_id, name, password, b_title, b_label, b_classify, b_createtime, b_id, b_pageview, b_words
+        from user, book
+        where book.u_id = user.id
+        order by b_createtime desc
+        limit #{param1},#{param2}
+    </select>
+    <select id="selectAllFriendLink" resultMap="com.colin.mapper.FriendLinkMapper.friendLinkResult">
+        select fl_id, fl_name, fl_path, u_id from friend_link
+    </select>
+    <select id="selectBookTitle" resultMap="bookResult">
+        select u_id, name, password, b_title, b_label, b_classify, b_createtime, b_id, b_pageview, b_words
+        from user, book
+        where book.u_id = user.id and b_title like '%${param1}%'
+        limit #{param2},#{param3}
+    </select>
+    <select id="getLinkTotalCount" resultType="java.lang.Integer">
+        select count(*) sum from friend_link
+    </select>
+    <select id="selectFriendLinkTitile" resultMap="com.colin.mapper.FriendLinkMapper.friendLinkResult">
+        select fl_id, fl_name, fl_path, u_id from friend_link where fl_name like '%${param1}%' limit #{param2},#{param3}
+    </select>
+</mapper>

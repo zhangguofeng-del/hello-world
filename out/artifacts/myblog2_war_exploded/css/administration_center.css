@@ -1,0 +1,108 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#div1{
+	width: 1366px;
+	height: 626px;
+}
+#div1 > #div2{
+	width: 17%;
+	height: 8.2%;
+	background-color: #eee;
+	float: left;
+}
+
+#div1 > #div2 > img{
+	position: absolute;
+	left: 1%;
+	top: 1.5%;
+}
+#div1 > #div2 > #sp1{
+	font-size: 22px;
+	position: absolute;
+	left: 4.9%;
+	top: 2%;
+	font-weight: bold;
+}
+#div1 > #div3{
+	width: 83%;
+	height: 8.2%;
+	float: right;
+}
+#div1 > #div3 > button{
+	position: relative;
+	left: 1.1%;
+	top: 30%;
+	border-color: white;
+	border-radius: 3px;
+}
+#div1 > #div3 > #ul1{
+	list-style-type: none;
+	position: absolute;
+	left: 20%;
+	top: 5%;
+	font-family: 楷体;
+	visibility: hidden;
+}
+#div1 > #div3 > #ul1 > li{
+	background-color: #2f353f;
+	margin-top: 1px;
+	color: white;
+	width: 100px;
+	height: 25px;
+	padding-top: 2px;
+	text-align: center;
+}
+#ul1> li > a{
+	text-decoration: none;
+	color: #fff;
+}
+#ul1> li > a:hover{
+	font-size: 20px;
+}
+#div1 > #div4{
+	width: 17%;
+	height: 91.8%;
+	background-color: #2e343f;
+	float: left;
+}
+
+#div1 > #div4 > #ul2{
+	font-family: "微软雅黑";
+	font-size: 15px;
+	width: 100%;
+	height: 59%;
+	list-style-type: none;
+}
+#div1 > #div4 > #ul2 > li{
+	width: 100%;
+	height: 12.5%;
+	background-repeat: no-repeat;
+}
+#div1 > #div4 > #ul2 > li > img{
+	margin-left: 30px;
+	margin-top: 10px;
+	vertical-align: middle;
+}
+#div1 > #div4 > #ul2 > li > a{
+	margin-left: 20px;
+	font-size: 12px;
+	color: #a6b0c2;
+	vertical-align: bottom;
+	text-decoration: none;
+}
+#div1 > #div5{
+	width: 83%;
+	height: 91.6%;
+	float: right;
+	background-color: #f9f9f9;
+}
+
+#div1 > #div5 > iframe{
+	border-color: lightgray;
+	border-width: 1px 0px;
+	border-style: solid;
+	background-color: #f5f5f5;
+}
+

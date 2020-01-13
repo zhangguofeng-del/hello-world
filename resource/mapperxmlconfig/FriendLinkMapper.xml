@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.FriendLinkMapper">
+    <resultMap id="friendLinkResult" type="com.colin.bean.FriendLink">
+        <id property="id" column="fl_id"/>
+        <result property="linkName" column="fl_name"/>
+        <result property="linkPath" column="fl_path"/>
+        <result property="userId" column="u_id"/>
+    </resultMap>
+    <insert id="insertFriendLink">
+        insert into friend_link values(null, #{linkName}, #{linkPath}, #{userId})
+    </insert>
+    <update id="updateFriendLink">
+        update friend_link set fl_name = #{linkName}, fl_path = #{linkPath} where fl_id = #{id}
+    </update>
+    <delete id="deleteFriendLink">
+        delete  from friend_link where fl_id = #{id}
+    </delete>
+    <select id="selectFriendLink" resultMap="friendLinkResult">
+        select fl_id, fl_name, fl_path, u_id from friend_link where u_id = #{id}
+    </select>
+    <select id="selectFriendLink2" resultMap="friendLinkResult">
+        select fl_id, fl_name, fl_path, u_id from friend_link where fl_id = #{id}
+    </select>
+</mapper>

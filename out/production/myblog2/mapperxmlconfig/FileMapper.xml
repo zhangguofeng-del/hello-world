@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.FileMapper">
+    <resultMap id="fileResult" type="com.colin.bean.MyFile">
+        <id property="fileId" column="f_id"/>
+        <result property="fileName" column="f_name"/>
+        <result property="userId" column="u_id"/>
+    </resultMap>
+    <insert id="insertFile">
+        insert into blog_file values(null, #{param1}, #{param2})
+    </insert>
+    <delete id="deleteFile">
+        delete from blog_file where f_id = #{id}
+    </delete>
+    <select id="selectFile" resultMap="fileResult">
+        select f_id, f_name, u_id from blog_file where u_id = #{id}
+    </select>
+    <select id="selectFile2" resultType="java.lang.String">
+        select f_name from blog_file where f_id = #{id}
+    </select>
+</mapper>
