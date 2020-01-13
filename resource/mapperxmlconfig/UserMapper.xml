@@ -7,4 +7,5 @@
     <select id="selectUserForLogin" resultType="com.colin.bean.User">
         select id, name, mail, password from user where name = #{name} and password = #{password}
     </select>
+
 </mapper>
